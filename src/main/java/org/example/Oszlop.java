@@ -36,9 +36,6 @@ public class Oszlop {
         for (int i = 0; i < o.length; i++) {
             jatekosString += o[i];
         }
-        if(jatekosString.contains(keresendo)) {
-            System.out.println("\n" +'\''+ jatekos + '\'' + " játékos nyert!\n");
-        }
         return jatekosString.contains(keresendo);
     }
 

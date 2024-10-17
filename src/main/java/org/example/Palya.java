@@ -2,6 +2,7 @@ package org.example;
 
 public class Palya {
     private Oszlop[] oszlopok;
+    private char gyoztes;
 
     public Palya(int oszlopok, int sorok) {
         int minValue = 4;
@@ -54,8 +55,7 @@ public class Palya {
             for (int i = 0; i < oszlopok.length - 3; i++) {
                 for (int j = oszlopok[0].getOszlop().length - 1; j > 0; j--) {
                     if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j] == jatekos && oszlopok[i + 2].getOszlop()[j] == jatekos && oszlopok[i + 3].getOszlop()[j] == jatekos) {
-                        System.out.println("Vízszintes nyertes!\n");
-                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
+                        setGyoztes(jatekosok[h]);
                         return true;
                     }
                 }
@@ -64,6 +64,7 @@ public class Palya {
             //függőleges keresés
             for (int i = 0; i < oszlopok.length; i++) {
                 if (oszlopok[i].checkOszlop(jatekos)) {
+                    setGyoztes(jatekosok[h]);
                     return true;
                 }
             }
@@ -72,8 +73,7 @@ public class Palya {
             for (int i = 0; i < oszlopok.length - 3; i++) {
                 for (int j = 0; j < oszlopok[0].getOszlop().length - 3; j++) {
                     if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j + 1] == jatekos && oszlopok[i + 2].getOszlop()[j + 3] == jatekos && oszlopok[i + 3].getOszlop()[j + 3] == jatekos) {
-                        System.out.println("Átlós nyertes!\n");
-                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
+                        setGyoztes(jatekosok[h]);
                         return true;
                     }
                 }
@@ -83,8 +83,7 @@ public class Palya {
             for (int i = 0; i < oszlopok.length - 3; i++) {
                 for (int j = 3 ; j < oszlopok[0].getOszlop().length; j++) {
                     if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j - 1] == jatekos && oszlopok[i + 2].getOszlop()[j - 2] == jatekos && oszlopok[i + 3].getOszlop()[j - 3] == jatekos) {
-                        System.out.println("Átlós nyertes visszafelé!\n");
-                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
+                        setGyoztes(jatekosok[h]);
                         return true;
                     }
                 }
@@ -98,6 +97,14 @@ public class Palya {
             oszlopMegteltE(i);
         }
         return false;
+    }
+
+    private void setGyoztes(char jatekos) {
+        gyoztes = jatekos;
+    }
+
+    public char getGyoztes() {
+        return gyoztes;
     }
 
     public boolean oszlopMegteltE(int index) {
