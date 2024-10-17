@@ -46,12 +46,13 @@ public class Oszlop {
         return this.o;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (char c : o) {
-            sb.append(c).append(" ");
+    public boolean oszlopMegteltE() {
+        String oszlop = "";
+        String keresendo = "0";
+        for (int i = 0; i < o.length; i++) {
+            oszlop += o[i];
         }
-        return sb.toString().trim();
+        return !(oszlop.contains(keresendo));
     }
+
 }

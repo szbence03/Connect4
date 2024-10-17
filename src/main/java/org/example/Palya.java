@@ -1,34 +1,32 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class Palya {
-    private Oszlop[] sorok;
+    private Oszlop[] oszlopok;
 
     public Palya(int oszlopok, int sorok) {
         int minValue = 4;
         int maxValue = 13;
         if (oszlopok >= minValue && oszlopok < maxValue) {
-            this.sorok = new Oszlop[oszlopok];
+            this.oszlopok = new Oszlop[oszlopok];
         } else {
             int defaultValue = 7;
-            this.sorok = new Oszlop[defaultValue];
+            this.oszlopok = new Oszlop[defaultValue];
         }
         sorFeltoltes(sorok);
        System.out.println(mezoKiiratas());
     }
 
     private void sorFeltoltes(int meret) {
-        for (int i = 0; i < sorok.length; i++) {
-            sorok[i] = new Oszlop(meret);
+        for (int i = 0; i < oszlopok.length; i++) {
+            oszlopok[i] = new Oszlop(meret);
         }
     }
 
     public String mezoKiiratas() {
         StringBuilder sb = new StringBuilder();
-        for (int j = 0; j < sorok[0].getOszlop().length; j++) {
-            for (int i = 0; i < sorok.length; i++) {
-                sb.append(sorok[i].getOszlop()[j]).append(" ");
+        for (int j = 0; j < oszlopok[0].getOszlop().length; j++) {
+            for (int i = 0; i < oszlopok.length; i++) {
+                sb.append(oszlopok[i].getOszlop()[j]).append(" ");
             }
             sb.append("\n");
         }
@@ -37,8 +35,8 @@ public class Palya {
 
     public void lepes(int oszlopIndex, char szin) {
         oszlopIndex -= 1;
-        if(oszlopIndex >= 0 && oszlopIndex < sorok.length) {
-            sorok[oszlopIndex].lepes(szin);
+        if(oszlopIndex >= 0 && oszlopIndex < oszlopok.length) {
+            oszlopok[oszlopIndex].lepes(szin);
 
             System.out.println("\nÚj lépés: " + szin + " a " + (oszlopIndex + 1) + ". oszlopon\n");
             System.out.println(mezoKiiratas());
@@ -50,65 +48,64 @@ public class Palya {
     public boolean checkGyoztes() {
         char[] jatekosok = {'A', 'B'};
         for(int h = 0; h < 2; h++) {
-           char jatekos = jatekosok[h];
+            char jatekos = jatekosok[h];
 
             //vízszintes keresés
-            for (int i = 0; i < sorok.length - 3; i++) {
-                for (int j = sorok[0].getOszlop().length-1; j > 0; j--) {
-                    if (sorok[i].getOszlop()[j] == jatekos && sorok[i + 1].getOszlop()[j] == jatekos && sorok[i + 2].getOszlop()[j] == jatekos && sorok[i + 3].getOszlop()[j] == jatekos) {
+            for (int i = 0; i < oszlopok.length - 3; i++) {
+                for (int j = oszlopok[0].getOszlop().length - 1; j > 0; j--) {
+                    if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j] == jatekos && oszlopok[i + 2].getOszlop()[j] == jatekos && oszlopok[i + 3].getOszlop()[j] == jatekos) {
                         System.out.println("Vízszintes nyertes!\n");
-                        System.out.println("\n" +'\''+ jatekos + '\'' + " játékos nyert!\n");
+                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
                         return true;
                     }
                 }
             }
 
             //függőleges keresés
-            for (int i = 0; i < sorok.length; i++) {
-               if(sorok[i].checkOszlop(jatekos)){
-                   return true;
-               }
+            for (int i = 0; i < oszlopok.length; i++) {
+                if (oszlopok[i].checkOszlop(jatekos)) {
+                    return true;
+                }
             }
 
             //átlós keresés
-            for (int i = 0; i < sorok.length - 3; i++) {
-                for (int j = 0; j > sorok[0].getOszlop().length - i; j++) {
-                    if (sorok[i].getOszlop()[j] == jatekos && sorok[i + 1].getOszlop()[j + 1] == jatekos && sorok[i + 2].getOszlop()[j + 3] == jatekos && sorok[i + 3].getOszlop()[j + 3] == jatekos) {
+            for (int i = 0; i < oszlopok.length - 3; i++) {
+                for (int j = 0; j < oszlopok[0].getOszlop().length - 3; j++) {
+                    if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j + 1] == jatekos && oszlopok[i + 2].getOszlop()[j + 3] == jatekos && oszlopok[i + 3].getOszlop()[j + 3] == jatekos) {
                         System.out.println("Átlós nyertes!\n");
-                        System.out.println("\n" +'\''+ jatekos + '\'' + " játékos nyert!\n");
+                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
                         return true;
                     }
                 }
             }
 
             //átlós keresés visszafele
-            for (int i = 0; i < sorok.length - 3; i++) {
-                for (int j = sorok[0].getOszlop().length - 1; j > i; j--) {
-                    if (sorok[i].getOszlop()[j] == jatekos && sorok[i + 1].getOszlop()[j - 1] == jatekos && sorok[i + 2].getOszlop()[j - 2] == jatekos && sorok[i + 3].getOszlop()[j - 3] == jatekos) {
-                        System.out.println("Átlós nyertes!\n");
-                        System.out.println("\n" +'\''+ jatekos + '\'' + " játékos nyert!\n");
+            for (int i = 0; i < oszlopok.length - 3; i++) {
+                for (int j = 3 ; j < oszlopok[0].getOszlop().length; j++) {
+                    if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j - 1] == jatekos && oszlopok[i + 2].getOszlop()[j - 2] == jatekos && oszlopok[i + 3].getOszlop()[j - 3] == jatekos) {
+                        System.out.println("Átlós nyertes visszafelé!\n");
+                        System.out.println("\n" + '\'' + jatekos + '\'' + " játékos nyert!\n");
                         return true;
                     }
                 }
             }
         }
-
         return false;
     }
 
     public boolean megteltE() {
-        for (int i = 0; i < sorok.length; i++) {
-            for (int j = 0; j < sorok[i].getOszlop().length; j++) {
-                if (sorok[i].getOszlop()[j] == '0') {
-                    return false;
-                }
-            }
+        for (int i = 0; i < oszlopok.length; i++) {
+            oszlopMegteltE(i);
         }
-        return true;
+        return false;
+    }
+
+    public boolean oszlopMegteltE(int index) {
+        return oszlopok[index].oszlopMegteltE();
     }
 
     public int getOszlopDb() {
-        return this.sorok.length;
+        return this.oszlopok.length;
     }
 
 

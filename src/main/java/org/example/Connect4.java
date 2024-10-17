@@ -15,13 +15,22 @@ public class Connect4 {
 
         while (!jatekEllenorzes()) {
             System.out.print("\n'A' játékos, add meg az oszlop számát: ");
-            jatek.lepes(input.nextInt(), 'A');
+            int sor = input.nextInt();
+            if(jatek.oszlopMegteltE(sor-1)) {
+                continue;
+            }
+            jatek.lepes(sor, 'A');
             if(jatekEllenorzes()) {
                 break;
             }
-            int ellenfelLepes = (int) Math.floor(Math.random() * jatek.getOszlopDb()) + 1;
             System.out.println("'B' játékos, lépése: \n");
+            int ellenfelLepes = (int) Math.floor(Math.random() * jatek.getOszlopDb()) + 1;
+            while (jatek.oszlopMegteltE(ellenfelLepes-1)) {
+                ellenfelLepes = (int) Math.floor(Math.random() * jatek.getOszlopDb()) + 1;
+            }
+
             jatek.lepes(ellenfelLepes, 'B');
+
             if(jatekEllenorzes()) {
                 break;
             }
@@ -30,7 +39,7 @@ public class Connect4 {
     }
 
     private boolean jatekEllenorzes() {
-        if (jatek.checkGyoztes()) {
+        if(jatek.checkGyoztes()) {
             return true;
         }
         if (jatek.megteltE()) {
