@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Palya {
     private Oszlop[] oszlopok;
     private char gyoztes;
@@ -14,7 +16,7 @@ public class Palya {
             this.oszlopok = new Oszlop[defaultValue];
         }
         sorFeltoltes(sorok);
-       System.out.println(mezoKiiratas());
+        System.out.println(mezoKiiratas());
     }
 
     private void sorFeltoltes(int meret) {
@@ -36,7 +38,7 @@ public class Palya {
 
     public void lepes(int oszlopIndex, char szin) {
         oszlopIndex -= 1;
-        if(oszlopIndex >= 0 && oszlopIndex < oszlopok.length) {
+        if (oszlopIndex >= 0 && oszlopIndex < oszlopok.length) {
             oszlopok[oszlopIndex].lepes(szin);
 
             System.out.println("\nÚj lépés: " + szin + " a " + (oszlopIndex + 1) + ". oszlopon\n");
@@ -48,14 +50,14 @@ public class Palya {
 
     public boolean checkGyoztes() {
         char[] jatekosok = {'A', 'B'};
-        for(int h = 0; h < 2; h++) {
+        for (int h = 0; h < 2; h++) {
             char jatekos = jatekosok[h];
 
             //vízszintes keresés
             for (int i = 0; i < oszlopok.length - 3; i++) {
                 for (int j = oszlopok[0].getOszlop().length - 1; j > 0; j--) {
                     if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j] == jatekos && oszlopok[i + 2].getOszlop()[j] == jatekos && oszlopok[i + 3].getOszlop()[j] == jatekos) {
-                        setGyoztes(jatekosok[h]);
+                        setGyoztes(jatekos);
                         return true;
                     }
                 }
@@ -64,7 +66,7 @@ public class Palya {
             //függőleges keresés
             for (int i = 0; i < oszlopok.length; i++) {
                 if (oszlopok[i].checkOszlop(jatekos)) {
-                    setGyoztes(jatekosok[h]);
+                    setGyoztes(jatekos);
                     return true;
                 }
             }
@@ -72,18 +74,18 @@ public class Palya {
             //átlós keresés
             for (int i = 0; i < oszlopok.length - 3; i++) {
                 for (int j = 0; j < oszlopok[0].getOszlop().length - 3; j++) {
-                    if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j + 1] == jatekos && oszlopok[i + 2].getOszlop()[j + 3] == jatekos && oszlopok[i + 3].getOszlop()[j + 3] == jatekos) {
-                        setGyoztes(jatekosok[h]);
+                    if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j + 1] == jatekos && oszlopok[i + 2].getOszlop()[j + 2] == jatekos && oszlopok[i + 3].getOszlop()[j + 3] == jatekos) {
+                        setGyoztes(jatekos);
                         return true;
                     }
                 }
             }
 
-            //átlós keresés visszafele
+            //átlós keresés másik irányból
             for (int i = 0; i < oszlopok.length - 3; i++) {
-                for (int j = 3 ; j < oszlopok[0].getOszlop().length; j++) {
+                for (int j = 3; j < oszlopok[0].getOszlop().length; j++) {
                     if (oszlopok[i].getOszlop()[j] == jatekos && oszlopok[i + 1].getOszlop()[j - 1] == jatekos && oszlopok[i + 2].getOszlop()[j - 2] == jatekos && oszlopok[i + 3].getOszlop()[j - 3] == jatekos) {
-                        setGyoztes(jatekosok[h]);
+                        setGyoztes(jatekos);
                         return true;
                     }
                 }
@@ -93,10 +95,14 @@ public class Palya {
     }
 
     public boolean megteltE() {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < oszlopok.length; i++) {
-            oszlopMegteltE(i);
+            for (int j = 0; j < oszlopok[0].getOszlop().length; j++) {
+                sb.append(oszlopok[i].getOszlop()[j]);
+            }
         }
-        return false;
+        String mezok = sb.toString();
+        return !mezok.contains("0");
     }
 
     private void setGyoztes(char jatekos) {
@@ -108,7 +114,10 @@ public class Palya {
     }
 
     public boolean oszlopMegteltE(int index) {
-        return oszlopok[index].oszlopMegteltE();
+        if (index >= 0 && index < oszlopok.length) {
+            return oszlopok[index].oszlopMegteltE();
+        }
+        return false;
     }
 
     public int getOszlopDb() {
@@ -116,5 +125,4 @@ public class Palya {
     }
 
 
-    }
-
+}
