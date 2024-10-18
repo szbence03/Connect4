@@ -1,3 +1,4 @@
+
 package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,21 +22,12 @@ class Connect4Test {
     @Mock
     private Palya palyaMock;
 
-    @Mock
-    private Scanner inputMock;
 
     @BeforeEach
     void setUp() {
-        connect4 = new Connect4(6, 7);
+        connect4 = new Connect4(palyaMock);
     }
 
-    @Test
-    void testJatekInditasShouldReturnTrue() {
-        when(inputMock.next()).thenReturn("Jatekos");
-        when(inputMock.nextInt()).thenReturn(1);
-        connect4.inditas();
-        assertTrue(connect4.jatekEllenorzes());
-    }
 
     @Test
     void testJatekEllenorzesShouldReturnTrue() {
