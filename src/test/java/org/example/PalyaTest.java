@@ -24,13 +24,27 @@ class PalyaTest {
     }
 
     @Test
+    void testConstructorAlapBeallitasok() {
+        assertEquals(6, palya.getOszlopDb());
+        assertEquals(7, palya.getSorok(0).length);
+    }
+
+    @Test
+    void testConstructorParameteresBeallitasok() {
+        Palya palya2 = new Palya(5, 6);
+        assertEquals(5, palya2.getOszlopDb());
+        assertEquals(6, palya2.getSorok(0).length);
+    }
+
+    @Test
     void testLepesShouldBeValid() {
         palya.lepes(1, 'A');
         assertNotNull(palya.getOszlopDb());
     }
 
+
     @Test
-    void testCheckGyoztesShouldReturnTrueAndgetGyoztesShoulReturnWinner() {
+    void testCheckGyoztesShouldReturnTrueAndgetGyoztesShouldReturnWinner() {
         for (int i = 1; i <= 4; i++) {
             palya.lepes(i, 'A');
         }
