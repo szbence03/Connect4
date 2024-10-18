@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class Palya {
     private Oszlop[] oszlopok;
     private char gyoztes;
@@ -12,11 +10,11 @@ public class Palya {
         System.out.println(mezoKiiratas());
     }
 
-    public Palya(int oszlopok, int sorok) {
+    public Palya(int oszlop, int sorok) {
         int minValue = 4;
         int maxValue = 13;
-        if (oszlopok >= minValue && oszlopok < maxValue) {
-            this.oszlopok = new Oszlop[oszlopok];
+        if (oszlop >= minValue && oszlop < maxValue) {
+            this.oszlopok = new Oszlop[oszlop];
             sorFeltoltes(sorok);
             System.out.println(mezoKiiratas());
         } else {
@@ -131,4 +129,7 @@ public class Palya {
     }
 
 
+    public char[] getSorok(int index) {
+        return oszlopok[index].getOszlop();
+    }
 }

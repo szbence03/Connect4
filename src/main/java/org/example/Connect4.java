@@ -21,12 +21,15 @@ public final class Connect4 {
     }
 
 
-
     public void inditas() {
         input = new Scanner(System.in);
         System.out.print("\nAdd meg a neved: ");
-        jatekosNev = input.next();
+        setJatekosNev(input.next());
+        jatekMenet();
+        input.close();
+    }
 
+    public void jatekMenet() {
         while (!jatekEllenorzes()) {
             System.out.print("\n" + jatekosNev + ", add meg az oszlop számát (1 - " + jatek.getOszlopDb() + "): ");
             int sor = input.nextInt();
@@ -48,8 +51,16 @@ public final class Connect4 {
             if (jatekEllenorzes()) {
                 break;
             }
+
         }
-        input.close();
+    }
+
+    public void setJatekosNev(String j) {
+        this.jatekosNev = j;
+    }
+
+    public String getJatekosNev() {
+        return jatekosNev;
     }
 
     public boolean jatekEllenorzes() {
