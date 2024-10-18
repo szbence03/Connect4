@@ -7,6 +7,7 @@ public final class App {
     }
 
     public static void main(final String[] args) {
-        new Connect4(6, 7);
+       Connect4 jatek = new Connect4(6, 7);
+       jatek.inditas();
     }
 }
