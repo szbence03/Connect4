@@ -32,12 +32,12 @@ public class Oszlop {
     }
 
     public boolean checkOszlop(char jatekos) {
-        String jatekosString = "";
+        StringBuilder jatekosString = new StringBuilder();
         String keresendo = jatekos == 'A' ? "AAAA" : "BBBB";
         for (int i = 0; i < o.length; i++) {
-            jatekosString += o[i];
+            jatekosString.append(o[i]);
         }
-        return jatekosString.contains(keresendo);
+        return jatekosString.toString().contains(keresendo);
     }
 
     public char[] getOszlop() {
@@ -45,12 +45,12 @@ public class Oszlop {
     }
 
     public boolean oszlopMegteltE() {
-        String oszlop = "";
+        StringBuilder oszlop = new StringBuilder();
         String keresendo = "0";
         for (int i = 0; i < o.length; i++) {
-            oszlop += o[i];
+            oszlop.append(o[i]);
         }
-        return !(oszlop.contains(keresendo));
+        return !(oszlop.toString().contains(keresendo));
     }
 
 }

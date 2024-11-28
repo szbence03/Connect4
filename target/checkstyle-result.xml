@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="9.3">
-<file name="C:\Users\User\IdeaProjects\Connect4\src\main\java\org\example\App.java">
-<error line="10" column="33" severity="error" message="&apos;6&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="10" column="36" severity="error" message="&apos;7&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-</file>
-<file name="C:\Users\User\IdeaProjects\Connect4\src\main\java\org\example\Oszlop.java">
-<error line="9" column="24" severity="error" message="&apos;4&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="10" column="24" severity="error" message="&apos;13&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="14" column="32" severity="error" message="&apos;6&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="26" column="5" severity="error" message="Class &apos;Oszlop&apos; looks like designed for extension (can be subclassed), but the method &apos;getOszlop&apos; does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class &apos;Oszlop&apos; final or making the method &apos;getOszlop&apos; static/final/abstract/empty, or adding allowed annotation for the method." source="com.puppycrawl.tools.checkstyle.checks.design.DesignForExtensionCheck"/>
-</file>
-<file name="C:\Users\User\IdeaProjects\Connect4\src\main\java\org\example\Palya.java">
-<error line="8" column="18" severity="error" message="Parameter sorok should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
-<error line="8" column="22" severity="error" message="&apos;sorok&apos; hides a field." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
-<error line="8" column="29" severity="error" message="Parameter oszlopok should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
-<error line="9" column="24" severity="error" message="&apos;4&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="10" column="24" severity="error" message="&apos;13&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="14" column="32" severity="error" message="&apos;6&apos; is a magic number." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="21" column="31" severity="error" message="Parameter meret should be final." source="com.puppycrawl.tools.checkstyle.checks.FinalParametersCheck"/>
+<file name="I:\egyetem\Java\Connect4B\src\main\java\org\example\Connect4.java">
 </file>
 </checkstyle>

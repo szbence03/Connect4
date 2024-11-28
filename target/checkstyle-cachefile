@@ -1,4 +1,8 @@
-#Tue Oct 15 20:06:17 CEST 2024
-configuration*?=9218F306F8F8AD4640DCDCF3DB867F57E803A38D
-module-resource*?\:checkstyle-suppressions.xml=A706D65E9ABC92B4CEC0D0144551BBE2BBC4FE1
-module-resource*?\:checkstyle-xpath-suppressions.xml=FAA5348672C242E14C39CB080F523EE1CD2D92C5
+#Thu Nov 28 16:12:28 CET 2024
+I\:\\egyetem\\Java\\Connect4B\\src\\main\\java\\org\\example\\App.java=1732805929901
+I\:\\egyetem\\Java\\Connect4B\\src\\main\\java\\org\\example\\Oszlop.java=1732792186650
+I\:\\egyetem\\Java\\Connect4B\\src\\main\\java\\org\\example\\Palya.java=1732791816743
+I\:\\egyetem\\Java\\Connect4B\\src\\main\\java\\org\\example\\ScoreManager.java=1732806673882
+configuration*?=D654BA414B1CFC05884D0697CD4BB2CF90E40A4E
+module-resource*?\:checkstyle-suppressions.xml=443AD4DA4489D52788157149DAD70ED4467B3A6E
+module-resource*?\:checkstyle-xpath-suppressions.xml=51D908BF6B2B0F82FD484DD4F966AE20197DAAAB

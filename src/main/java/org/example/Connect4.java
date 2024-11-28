@@ -7,17 +7,21 @@ public final class Connect4 {
     private Scanner input;
 
     private String jatekosNev;
+    private ScoreManager dbManager;
 
     public Connect4() {
         jatek = new Palya(6, 7);
+        dbManager = new ScoreManager();
     }
 
     public Connect4(Palya palyaMock) {
         jatek = palyaMock;
+        dbManager = new ScoreManager();
     }
 
     public Connect4(int oszlopok, int sorok) {
         jatek = new Palya(oszlopok, sorok);
+        dbManager = new ScoreManager();
     }
 
 
@@ -25,8 +29,10 @@ public final class Connect4 {
         input = new Scanner(System.in);
         System.out.print("\nAdd meg a neved: ");
         setJatekosNev(input.next());
+        dbManager.jatekosHozzaad(jatekosNev);
         jatekMenet();
         input.close();
+        dbManager.scoreKiirat();
     }
 
     public void jatekMenet() {
@@ -67,6 +73,7 @@ public final class Connect4 {
         if (jatek.checkGyoztes()) {
             if (jatek.getGyoztes() == 'A') {
                 System.out.println("\n" + jatekosNev + ", nyertél!\n");
+                dbManager.nyertMeccsekFrissites(jatekosNev);
             } else {
                 System.out.println("\nAz ellenfeled nyert!\n");
             }
